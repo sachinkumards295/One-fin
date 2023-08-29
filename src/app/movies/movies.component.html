@@ -1,0 +1,33 @@
+<div class="head-title">
+    <div class="m-list">
+        Movies List
+    </div>
+    <div *ngIf="showRefresh" class="refresh" >
+        <button (click)="refresh()" class="refresh-btn" >
+            Refresh
+        </button>
+    </div>
+    <div class="heade-desc">
+<input  [(ngModel)]="filterTerm"   class="search-word" placeholder="Search" type="search" id="site-search" name="q" />
+    </div>
+    <div>
+
+    </div>
+</div>
+
+
+<div class="cards-header">
+<div *ngFor="let item of moviesDataDisply | filter: filterTerm">
+       <div class="card-body" (click)="OpenModalPopUp(item.uuid)">
+        <div  class="movieImage">
+            <img class="movieImg" [src]="item.imgaeUrl"  alt="Movie Poster">
+        </div>
+        <div class="movie-title">{{item.title}}</div>
+        <div class="geners">{{ item.genres}}</div>
+        <div class="discription">{{item.description | truncate: 20}}</div> 
+
+
+       </div>
+
+</div>
+</div>

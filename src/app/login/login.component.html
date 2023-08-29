@@ -1,0 +1,27 @@
+<div class="wrapper">
+    <div class="logo">
+        <img src="assets/one.png" alt="">
+    </div>
+    <div class="text-center mt-4 name">
+        Onefin
+    </div>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)" class="p-3 mt-3">
+        <label>UserName</label>
+        <div class="form-field d-flex align-items-center">
+            <span class="far fa-user"></span>
+            <input required  type="text" name="userName" id="userName" placeholder="username" formControlName="username" >
+        </div>
+        <div     class="error-message"  *ngIf="f.username.invalid  && (f.username.touched ||  f.username.dirty || !errorInvalid)">
+            <div>username is required.</div>
+          </div>
+        <label>Password</label>
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input type="password" name="password" id="pwd" placeholder="Password" formControlName="password" >
+        </div>
+        <div class="error-message" *ngIf="f.password.invalid  && (f.password.touched ||  f.password.dirty || !errorInvalid)">
+            <div >password is required.</div>
+          </div>
+        <button class="btn mt-3" [disabled]="myForm.invalid || loggingIn">Login</button>
+    </form>
+</div>
